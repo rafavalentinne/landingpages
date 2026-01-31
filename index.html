@@ -43,8 +43,11 @@
       line-height: 1.6;
       overflow-x: hidden;
       background-image: 
-        radial-gradient(circle at 10% 0%, rgba(99, 102, 241, 0.15), transparent 40%),
-        radial-gradient(circle at 90% 90%, rgba(16, 185, 129, 0.08), transparent 40%);
+        linear-gradient(rgba(2, 6, 23, 0.9), rgba(2, 6, 23, 0.95)),
+        url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
 
     h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; margin: 0; line-height: 1.2; }
@@ -102,7 +105,7 @@
     .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 24px; letter-spacing: -1px; }
     .hero p { font-size: 1.25rem; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; }
 
-    /* EDUCACIÓN (Problema vs Solución) */
+    /* EDUCACIÓN */
     .education-grid { 
       display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; 
     }
@@ -130,7 +133,7 @@
       .education-grid, .stats-box { grid-template-columns: 1fr; } 
     }
 
-    /* PORTAFOLIO */
+    /* PORTAFOLIO - COM IMAGENS */
     .filters { display: flex; gap: 10px; flex-wrap: wrap; margin: 30px 0 50px; justify-content: center; }
     .filter-btn {
       padding: 10px 20px; border-radius: 50px; background: rgba(255,255,255,0.03);
@@ -148,15 +151,17 @@
     }
     .project-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
     
+    /* Configuração da Imagem do Card */
     .card-thumb { height: 220px; background: #000; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
     
-    /* Placeholder estilo 'code' */
-    .thumb-placeholder {
-      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
-      font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
-      color: rgba(255,255,255,0.3);
-      background: linear-gradient(45deg, #0f172a 25%, #1e293b 25%, #1e293b 50%, #0f172a 50%, #0f172a 75%, #1e293b 75%, #1e293b 100%);
-      background-size: 20px 20px;
+    .card-thumb img { 
+      width: 100%; height: 100%; object-fit: cover; 
+      transition: transform 0.5s ease;
+      opacity: 0.8; /* Leve transparência para combinar com o dark mode */
+    }
+    .project-card:hover .card-thumb img { 
+      transform: scale(1.1); 
+      opacity: 1; /* Fica brilhante no hover */
     }
 
     .card-body { padding: 25px; }
@@ -323,8 +328,11 @@
       </div>
 
       <div class="portfolio-grid">
+        
         <div class="project-card reveal" data-category="beleza" data-title="Barbería Premium" data-file="./barberia.html">
-          <div class="card-thumb"><div class="thumb-placeholder" style="background:#1a1a1a;">💈 Barbería</div></div>
+          <div class="card-thumb">
+            <img src="barberia.png" alt="Barbería">
+          </div>
           <div class="card-body">
             <div class="card-meta"><span class="category-badge">Estética</span></div>
             <h3 class="card-title">Barbería Premium</h3>
@@ -338,7 +346,9 @@
         </div>
 
         <div class="project-card reveal" data-category="food" data-title="Chocolatería" data-file="./chocolateria.html">
-          <div class="card-thumb"><div class="thumb-placeholder" style="background:#3E2723;">🍫 Chocolatería</div></div>
+          <div class="card-thumb">
+            <img src="chocolateria.png" alt="Chocolatería">
+          </div>
           <div class="card-body">
             <div class="card-meta"><span class="category-badge">Hostelería</span></div>
             <h3 class="card-title">Churrería Artesanal</h3>
@@ -352,7 +362,9 @@
         </div>
 
         <div class="project-card reveal" data-category="beleza" data-title="Studio Pestañas" data-file="./pestanas.html">
-          <div class="card-thumb"><div class="thumb-placeholder" style="background:#d946ef;">👁️ Studio Pestañas</div></div>
+          <div class="card-thumb">
+            <img src="pestanas.png" alt="Pestañas">
+          </div>
           <div class="card-body">
             <div class="card-meta"><span class="category-badge">Estética</span></div>
             <h3 class="card-title">L'Amour Lash</h3>
@@ -366,7 +378,9 @@
         </div>
 
         <div class="project-card reveal" data-category="food" data-title="Hamburguesería" data-file="./hamburguesa.html">
-          <div class="card-thumb"><div class="thumb-placeholder" style="background:#e67e22;">🍔 Hamburguesería</div></div>
+          <div class="card-thumb">
+            <img src="hamburguesa.png" alt="Burger">
+          </div>
           <div class="card-body">
             <div class="card-meta"><span class="category-badge">Hostelería</span></div>
             <h3 class="card-title">Burger Delivery</h3>
@@ -380,7 +394,9 @@
         </div>
 
         <div class="project-card reveal" data-category="servicos" data-title="Carpintería" data-file="./carpinteria.html">
-          <div class="card-thumb"><div class="thumb-placeholder" style="background:#5D4037;">🪑 Carpintería</div></div>
+          <div class="card-thumb">
+            <img src="carpinteria.png" alt="Carpintería">
+          </div>
           <div class="card-body">
             <div class="card-meta"><span class="category-badge">Servicios</span></div>
             <h3 class="card-title">Muebles a Medida</h3>
@@ -394,7 +410,9 @@
         </div>
 
         <div class="project-card reveal" data-category="varejo" data-title="Óptica Visión" data-file="./optica.html">
-          <div class="card-thumb"><div class="thumb-placeholder" style="background:#f59e0b;">👓 Óptica</div></div>
+          <div class="card-thumb">
+            <img src="optica.png" alt="Óptica">
+          </div>
           <div class="card-body">
             <div class="card-meta"><span class="category-badge">Retail</span></div>
             <h3 class="card-title">Óptica Visión</h3>
@@ -408,7 +426,9 @@
         </div>
 
         <div class="project-card reveal" data-category="servicos" data-title="Repara Todo" data-file="./reparatodo.html">
-          <div class="card-thumb"><div class="thumb-placeholder" style="background:#2C3E50;">🔧 Repara Todo</div></div>
+          <div class="card-thumb">
+            <img src="reparatodo.png" alt="Reparaciones">
+          </div>
           <div class="card-body">
             <div class="card-meta"><span class="category-badge">Servicios</span></div>
             <h3 class="card-title">Manitas a Domicilio</h3>
@@ -422,7 +442,9 @@
         </div>
 
         <div class="project-card reveal" data-category="food" data-title="Restaurante Brasileño" data-file="./restaurante.html">
-          <div class="card-thumb"><div class="thumb-placeholder" style="background:#A0522D;">🍲 Brasileño</div></div>
+          <div class="card-thumb">
+            <img src="restaurante.png" alt="Comida Brasileña">
+          </div>
           <div class="card-body">
             <div class="card-meta"><span class="category-badge">Hostelería</span></div>
             <h3 class="card-title">Sabores de Brasil</h3>
@@ -436,7 +458,9 @@
         </div>
 
         <div class="project-card reveal" data-category="varejo" data-title="iStore" data-file="./istore.html">
-          <div class="card-thumb"><div class="thumb-placeholder" style="background:#333;">📱 iStore</div></div>
+          <div class="card-thumb">
+            <img src="istore.png" alt="Tech Store">
+          </div>
           <div class="card-body">
             <div class="card-meta"><span class="category-badge">Retail</span></div>
             <h3 class="card-title">Tienda Apple</h3>
@@ -496,7 +520,7 @@
 
   <footer>
     <div class="container">
-      <p style="color: var(--text-muted);">© 2026 DevLanding. Especialista en Performance Web.</p>
+      <p style="color: var(--text-muted);">© 2024 DevLanding. Especialista en Performance Web.</p>
     </div>
   </footer>
 
@@ -521,8 +545,10 @@
     </div>
   </div>
 
-  <a href="https://wa.me/34600000000" class="wa-float" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382C17.112 14.382 16.752 14.248 16.479 13.973C15.933 13.427 15.933 12.539 16.479 11.993C17.025 11.447 17.913 11.447 18.459 11.993C19.005 12.539 19.005 13.427 18.459 13.973C18.186 14.248 17.826 14.382 17.472 14.382Z"/><path d="M5.957 14.382C5.597 14.382 5.237 14.248 4.964 13.973C4.418 13.427 4.418 12.539 4.964 11.993C5.51 11.447 6.398 11.447 6.944 11.993C7.49 12.539 7.49 13.427 6.944 13.973C6.671 14.248 6.311 14.382 5.957 14.382Z"/><path d="M12 2C6.486 2 2 6.486 2 12C2 17.514 6.486 22 12 22C17.514 22 22 17.514 22 12C22 6.486 17.514 2 12 2ZM12 20C7.589 20 4 16.411 4 12C4 7.589 7.589 4 12 4C16.411 4 20 7.589 20 12C20 16.411 16.411 20 12 20Z" fill="white"/><path d="M12 18C8.691 18 6 15.309 6 12H8C8 14.206 9.794 16 12 16C14.206 16 16 14.206 16 12H18C18 15.309 15.309 18 12 18Z" fill="white"/></svg>
+<a href="https://wa.me/34600000000" class="wa-float" aria-label="WhatsApp">
+    <svg width="35" height="35" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M18.403 5.633A8.919 8.919 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.126 1.198 4.488L3 21.116l4.759-1.249a8.981 8.981 0 0 0 4.29 1.093h.004c4.947 0 8.975-4.027 8.977-8.977a8.926 8.926 0 0 0-2.627-6.35m-6.35 13.812h-.003a7.446 7.446 0 0 1-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.448 7.448 0 0 1-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.413 7.413 0 0 1 5.275 2.188 7.42 7.42 0 0 1 2.183 5.279c-.002 4.114-3.349 7.462-7.461 7.462m4.093-5.589c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.112-.149.224-.579.73-.709.88-.131.149-.261.169-.486.056-.224-.113-.953-.351-1.815-1.12-.669-.598-1.12-1.335-1.251-1.561-.131-.224-.014-.345.099-.458.101-.101.224-.262.336-.393.112-.131.149-.224.224-.374.075-.149.037-.28-.019-.393-.056-.113-.504-1.214-.69-1.663-.181-.435-.366-.377-.504-.383-.131-.006-.28-.006-.429-.006-.149 0-.393.056-.599.28-.205.224-.784.766-.784 1.869 0 1.102.803 2.167.915 2.316.112.15 1.582 2.415 3.832 3.387 1.336.577 1.856.577 2.536.485.753-.102 1.327-.542 1.514-1.066.187-.524.187-.973.131-1.067-.056-.094-.206-.15-.43-.262"/>
+    </svg>
   </a>
 
   <script>
