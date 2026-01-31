@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Óptica Visión | Salud Visual y Estilo en Madrid</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Variáveis de Cor e Reset --- */
+        :root {
+            --primary: #0056b3; /* Azul Clínico/Confianza */
+            --primary-dark: #004494;
+            --accent: #25D366; /* Verde WhatsApp */
+            --text-dark: #1a1a1a;
+            --text-light: #f5f5f5;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0,0,0,0.08);
+            
+            --font-title: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: var(--font-body); 
+            background-color: var(--bg-light); 
+            color: var(--text-dark); 
+            line-height: 1.6; 
+            padding-bottom: 60px;
+        }
+        
+        img { max-width: 100%; display: block; }
+        h1, h2, h3 { font-family: var(--font-title); font-weight: 700; color: var(--text-dark); line-height: 1.2; }
+        
+        /* --- Utilitários --- */
+        .container { width: 90%; max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+        .text-center { text-align: center; }
+        .section-padding { padding: 60px 0; }
+        
+        /* --- Barra de Aviso --- */
+        .top-bar {
+            background-color: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* --- Botones --- */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 15px 30px; border-radius: 50px; font-weight: 700;
+            text-decoration: none; transition: 0.3s; cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none;
+            font-family: var(--font-title); text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        
+        .btn-primary { background-color: var(--primary); color: white; }
+        .btn-primary:hover { background-color: var(--primary-dark); transform: translateY(-2px); }
+        
+        .btn-whatsapp { background-color: var(--accent); color: white; }
+        .btn-whatsapp:hover { background-color: #128C7E; transform: translateY(-2px); }
+
+        .btn-outline { border: 2px solid var(--white); color: var(--white); background: transparent; }
+        .btn-outline:hover { background: var(--white); color: var(--primary); }
+
+        /* --- Hero Section COM FOTO DE FUNDO CORRIGIDA --- */
+        header {
+            background-color: #1a1a1a; /* Cor de segurança */
+            height: 80vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* IMAGEM NOVA: Interior de Ótica Moderna */
+            background-image: url('fundootica.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+            /* Animação suave */
+            animation: zoomEffect 40s infinite alternate;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            /* Gradiente azul escuro para leitura */
+            background: linear-gradient(to bottom, rgba(0, 40, 85, 0.7), rgba(0, 86, 179, 0.9));
+            z-index: 1;
+        }
+        
+        .hero-title { 
+            font-size: 3.5rem; margin-bottom: 20px; color: white; 
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .hero-subtitle { 
+            font-size: 1.3rem; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;
+            opacity: 0.95; font-weight: 400; text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        @keyframes zoomEffect {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        /* --- Marcas (Autoridad) --- */
+        .brands-bar { background: white; padding: 30px 0; border-bottom: 1px solid #eee; }
+        .brands-grid { 
+            display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; align-items: center; 
+            opacity: 0.6; filter: grayscale(100%); 
+        }
+        .brand-item { font-weight: 700; font-size: 1.5rem; color: #888; font-family: var(--font-title); }
+
+        /* --- Beneficios --- */
+        .benefits-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; 
+            margin-top: 40px;
+        }
+        .benefit-card {
+            background: white; padding: 30px; border-radius: 12px;
+            box-shadow: var(--shadow); text-align: center; transition: 0.3s;
+            border-bottom: 4px solid var(--primary);
+        }
+        .benefit-card:hover { transform: translateY(-5px); }
+        .benefit-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+
+        /* --- Productos --- */
+        .products-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; 
+            margin-top: 40px;
+        }
+        .product-card {
+            background: white; border-radius: 12px; overflow: hidden;
+            box-shadow: var(--shadow); transition: 0.3s; border: 1px solid #eee;
+            display: flex; flex-direction: column;
+        }
+        .product-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        
+        .product-img { height: 250px; width: 100%; object-fit: cover; }
+        
+        .product-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .product-title { font-size: 1.2rem; margin-bottom: 5px; }
+        .product-desc { font-size: 0.9rem; color: #666; margin-bottom: 15px; flex-grow: 1; }
+        .price-tag { 
+            display: block; font-size: 1.4rem; font-weight: 700; color: var(--primary); margin-bottom: 15px; 
+        }
+        
+        /* Botão produto */
+        .btn-product {
+            border: 2px solid var(--primary); color: var(--primary); background: transparent;
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 10px 20px; border-radius: 50px; font-weight: 700; width: 100%;
+            text-decoration: none; transition: 0.3s; cursor: pointer;
+            font-family: var(--font-title); text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .btn-product:hover { background: var(--primary); color: white; }
+
+
+        /* --- Testimonios --- */
+        .testimonials { background-color: var(--white); }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        
+        .review-card {
+            background: var(--bg-light); padding: 30px; border-radius: 12px;
+            position: relative;
+        }
+        .stars { color: #FFD700; margin-bottom: 10px; display: block; }
+        .client-name { font-weight: 700; margin-top: 15px; display: block; color: var(--primary-dark); }
+
+        /* --- FAQ --- */
+        .faq-container { max-width: 800px; margin: 0 auto; margin-top: 40px; }
+        details {
+            background: white; margin-bottom: 10px; border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden;
+        }
+        summary {
+            padding: 20px; cursor: pointer; font-weight: 600;
+            display: flex; justify-content: space-between; align-items: center; list-style: none;
+        }
+        summary::after { content: '+'; font-size: 1.5rem; color: var(--primary); }
+        details[open] summary::after { content: '-'; }
+        .faq-ans { padding: 0 20px 20px 20px; color: #555; }
+
+        /* --- Mapa & Footer --- */
+        .map-box { height: 400px; width: 100%; border-radius: 12px; overflow: hidden; margin-top: 30px; box-shadow: var(--shadow); }
+        footer { background: var(--text-dark); color: #aaa; text-align: center; padding: 60px 0 40px 0; }
+        .footer-info p { margin-bottom: 10px; }
+
+        /* --- Botón Flotante --- */
+        .float-wa {
+            position: fixed; bottom: 25px; right: 25px;
+            background: var(--accent); color: white;
+            width: 65px; height: 65px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 2000; transition: 0.3s; animation: pulse 2s infinite;
+        }
+        .float-wa:hover { transform: scale(1.1); }
+        .wa-badge {
+            position: absolute; top: -5px; right: -5px;
+            background: red; color: white; font-size: 11px; font-weight: bold;
+            width: 22px; height: 22px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid white;
+        }
+
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.2rem; }
+            .brands-grid { gap: 20px; }
+            .brand-item { font-size: 1.2rem; }
+            header { height: auto; padding: 120px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        👓 Promo del Mes: ¡Cristales Monofocales listos en 1 hora!
+    </div>
+
+    <header>
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        
+        <div class="container" style="position: relative; z-index: 3;">
+            <h1 class="hero-title">Tu Nueva Mirada Empieza Aquí.<br>Calidad y Rapidez en Madrid.</h1>
+            <p class="hero-subtitle">Monturas de diseño, cristales de alta tecnología y gabinete optométrico propio. Ven a visitarnos en Calle Gran Vía.</p>
+            
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#" onclick="openWhatsapp('Cita')" class="btn btn-primary">
+                    📅 Pedir Cita Revisión
+                </a>
+                <a href="#catalogo" class="btn btn-outline">
+                    Ver Monturas
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="brands-bar">
+        <div class="container">
+            <p class="text-center" style="margin-bottom: 15px; font-size: 0.9rem; color: #999; text-transform: uppercase;">Trabajamos con las mejores marcas</p>
+            <div class="brands-grid">
+                <span class="brand-item">VARILUX</span>
+                <span class="brand-item">ZEISS</span>
+                <span class="brand-item">HOYA</span>
+                <span class="brand-item">RAY-BAN</span>
+                <span class="brand-item">TRANSITIONS</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="text-center">¿Por qué elegir Óptica Visión?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">⚡</span>
+                    <h3>Entrega Express</h3>
+                    <p>Taller propio. Tus gafas monofocales pueden estar listas en el mismo día (según stock).</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">👓</span>
+                    <h3>Asesoría de Imagen</h3>
+                    <p>Nuestro equipo te ayuda a elegir la montura que mejor sienta a tu rostro y estilo.</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🛡️</span>
+                    <h3>Garantía Total</h3>
+                    <p>Garantía de adaptación en progresivos y 2 años de garantía en defectos de fábrica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="catalogo" style="background: white;">
+        <div class="container">
+            <h2 class="text-center">Destacados de la Colección</h2>
+            <p class="text-center" style="color: #666;">Modelos seleccionados a precios de fábrica.</p>
+            
+            <div id="products-grid" class="products-grid">
+                </div>
+            
+            <div class="text-center" style="margin-top: 50px;">
+                <a href="#" onclick="openWhatsapp('Catalogo')" class="btn btn-primary">
+                    Ver Catálogo Completo por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding testimonials">
+        <div class="container">
+            <h2 class="text-center">Opiniones de Clientes</h2>
+            <div class="testimonial-grid">
+                <div class="review-card">
+                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                    <p>"Me hicieron las gafas graduadas en 1 hora. Me salvaron el viaje de trabajo. Precio muy competitivo."</p>
+                    <span class="client-name">Ricardo L.</span>
+                </div>
+                <div class="review-card">
+                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                    <p>"El trato es excelente. Tuvieron mucha paciencia para que me probara 20 monturas hasta dar con la perfecta."</p>
+                    <span class="client-name">Fernanda M.</span>
+                </div>
+                <div class="review-card">
+                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                    <p>"Uso progresivos Varilux y quedaron perfectos a la primera. La adaptación fue inmediata. Muy recomendables."</p>
+                    <span class="client-name">Doña María</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: var(--bg-light);">
+        <div class="container faq-container">
+            <h2 class="text-center" style="margin-bottom: 30px;">Preguntas Frecuentes</h2>
+            
+            <details>
+                <summary>¿Hacéis graduación de la vista?</summary>
+                <div class="faq-ans">¡Sí! Tenemos gabinete optométrico. La revisión es gratuita al comprar tus gafas.</div>
+            </details>
+            <details>
+                <summary>¿Cuáles son las formas de pago?</summary>
+                <div class="faq-ans">Aceptamos Tarjeta, Efectivo y podemos financiar tus gafas en 3 meses sin intereses.</div>
+            </details>
+            <details>
+                <summary>¿Cuánto tardan las gafas?</summary>
+                <div class="faq-ans">Cristales monofocales (stock) en 1h o 24h. Progresivos o fabricaciones especiales de 3 a 7 días.</div>
+            </details>
+            <details>
+                <summary>¿Arregláis gafas rotas?</summary>
+                <div class="faq-ans">Sí, hacemos ajustes, cambios de plaquetas y tornillos al momento y muchas veces sin coste.</div>
+            </details>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: white;">
+        <div class="container">
+            <h2 class="text-center">Visita Nuestra Tienda</h2>
+            <p class="text-center">Estamos en pleno centro de Madrid, fácil acceso por Metro Gran Vía.</p>
+            
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.484410703608!2d-3.704346824102514!3d40.42027137143905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42288775c66b1f%3A0x5959b7e4bbd9fc8!2sGran%20V%C3%ADa%2C%2028%2C%20Centro%2C%2028013%20Madrid!5e0!3m2!1spt-BR!2ses!4v1769873756278!5m2!1spt-BR!2ses" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-info">
+            <h3 style="color:white; margin-bottom: 20px;">Óptica Visión</h3>
+            <p>📍 Calle Gran Vía, 28 - Madrid Centro</p>
+            <p>🕒 Lun a Vie: 10h a 20h | Sáb: 10h a 14h</p>
+            <p>📞 (+34) 912 345 678</p>
+            <div style="margin-top: 30px; font-size: 2rem;">💳 💶</div>
+            <p style="font-size: 0.8rem; margin-top: 10px;">Aceptamos: Visa, Master, Amex y Efectivo.</p>
+        </div>
+    </footer>
+
+    <a href="#" onclick="openWhatsapp('Float')" class="float-wa">
+        <div class="wa-badge">1</div>
+        <svg width="35" height="35" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382C17.112 14.382 16.752 14.248 16.479 13.973C15.933 13.427 15.933 12.539 16.479 11.993C17.025 11.447 17.913 11.447 18.459 11.993C19.005 12.539 19.005 13.427 18.459 13.973C18.186 14.248 17.826 14.382 17.472 14.382Z" fill="white"/><path d="M5.957 14.382C5.597 14.382 5.237 14.248 4.964 13.973C4.418 13.427 4.418 12.539 4.964 11.993C5.51 11.447 6.398 11.447 6.944 11.993C7.49 12.539 7.49 13.427 6.944 13.973C6.671 14.248 6.311 14.382 5.957 14.382Z" fill="white"/><path d="M12 2C6.486 2 2 6.486 2 12C2 17.514 6.486 22 12 22C17.514 22 22 17.514 22 12C22 6.486 17.514 2 12 2ZM12 20C7.589 20 4 16.411 4 12C4 7.589 7.589 4 12 4C16.411 4 20 7.589 20 12C20 16.411 16.411 20 12 20Z" fill="white"/><path d="M12 18C8.691 18 6 15.309 6 12H8C8 14.206 9.794 16 12 16C14.206 16 16 14.206 16 12H18C18 15.309 15.309 18 12 18Z" fill="white"/></svg>
+    </a>
+
+    <script>
+        // DADOS DOS PRODUTOS
+        const products = [
+            { name: "Pasta Carey Clásica", price: "€ 89,00", img: "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=500&auto=format&fit=crop", desc: "Estilo atemporal tipo Carey (Tortoise). Combina con todo." },
+            { name: "Metal Slim Gold", price: "€ 110,00", img: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500&auto=format&fit=crop", desc: "Ligereza y sofisticación dorada." },
+            { name: "Bold Black Acetato", price: "€ 75,00", img: "boldblack.webp", desc: "Marcada y moderna. Personalidad fuerte." }
+        ];
+
+        // RENDERIZAR PRODUTOS
+        const productsGrid = document.getElementById('products-grid');
+        products.forEach(p => {
+            const html = `
+                <div class="product-card">
+                    <img src="${p.img}" alt="${p.name}" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">${p.name}</h3>
+                        <p class="product-desc">${p.desc}</p>
+                        <span class="price-tag">${p.price}</span>
+                        <a href="#" onclick="openWhatsapp('Producto: ${p.name}')" class="btn btn-product">Reservar</a>
+                    </div>
+                </div>
+            `;
+            productsGrid.innerHTML += html;
+        });
+
+        // FUNÇÃO WHATSAPP
+        const phone = "34600000000"; // SUBSTITUA PELO SEU NÚMERO
+
+        function openWhatsapp(interest) {
+            let msg = "";
+            if(interest === 'Cita') msg = "Hola! Me gustaría pedir cita para una revisión visual.";
+            else if(interest === 'Catalogo') msg = "Hola! Me gustaría ver el catálogo completo de monturas.";
+            else if(interest === 'Float') msg = "Hola! Tengo una duda sobre vuestros servicios.";
+            else msg = `Hola! Me interesa el modelo *${interest}*. ¿Lo tenéis disponible?`;
+
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repara Todo | Manitas y Reformas en Madrid</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. Variables y Reset --- */
+        :root {
+            --primary-blue: #2C3E50;
+            --primary-dark: #1a252f;
+            --accent-orange: #E67E22;
+            --accent-hover: #d35400;
+            --bg-light: #F4F7F6;
+            --bg-white: #ffffff;
+            --text-main: #333333;
+            --text-gray: #666666;
+            --whatsapp-green: #25D366;
+            --font-title: 'Montserrat', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            --shadow: 0 5px 15px rgba(0,0,0,0.08);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { font-family: var(--font-body); background-color: var(--bg-light); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        
+        /* Títulos Generales */
+        h1, h2, h3 { font-family: var(--font-title); font-weight: 700; color: var(--primary-blue); line-height: 1.2; }
+        
+        img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        a { text-decoration: none; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .text-center { text-align: center; }
+        .bg-white { background-color: var(--bg-white); }
+        
+        /* --- Botones --- */
+        .btn-cta {
+            display: inline-flex; align-items: center; justify-content: center;
+            background-color: var(--accent-orange); color: #fff; padding: 16px 32px;
+            border-radius: 50px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; font-size: 1rem;
+            transition: var(--transition); box-shadow: 0 4px 10px rgba(230, 126, 34, 0.4); border: none; cursor: pointer;
+        }
+        .btn-cta:hover { background-color: var(--accent-hover); transform: translateY(-3px); box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5); }
+
+        .float-wa {
+            position: fixed; bottom: 25px; right: 25px; background: var(--whatsapp-green); color: white;
+            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 100; transition: var(--transition); animation: pulse 2s infinite;
+        }
+        .float-wa:hover { transform: scale(1.1); }
+
+        /* --- HERO SECTION --- */
+        header {
+            position: relative;
+            height: 90vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff; 
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(30, 45, 60, 0.7), rgba(30, 45, 60, 0.6)),
+                        url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative; z-index: 2;
+            max-width: 700px; padding: 20px;
+            text-align: center;
+        }
+
+        .badge {
+            background: rgba(230, 126, 34, 0.9); color: #fff; padding: 5px 15px; border-radius: 20px;
+            font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+            display: inline-block; margin-bottom: 20px;
+        }
+
+        header h1 { 
+            font-size: 3rem; margin-bottom: 20px; color: #ffffff !important; 
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5); 
+        }
+        
+        header p { 
+            font-size: 1.25rem; margin-bottom: 40px; color: #ffffff !important; 
+            font-weight: 400;
+        }
+
+        /* --- SECCIONES --- */
+        section { padding: 80px 0; }
+        .section-header { margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.2rem; margin-bottom: 10px; }
+        .section-header p { color: var(--text-gray); max-width: 600px; margin: 0 auto; }
+
+        /* --- CARDS SERVICIOS --- */
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .service-card { background: #fff; padding: 40px 30px; border-radius: var(--radius); box-shadow: var(--shadow); transition: var(--transition); border-bottom: 4px solid transparent; text-align: center; }
+        .service-card:hover { transform: translateY(-10px); border-bottom: 4px solid var(--accent-orange); }
+        .icon-box { width: 70px; height: 70px; background: #FFF4E6; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; font-size: 1.8rem; color: var(--accent-orange); }
+        .service-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+        .service-card p { font-size: 0.95rem; color: var(--text-gray); }
+
+        /* --- POR QUÉ NOSOTROS --- */
+        .why-us { background-color: var(--primary-blue); color: #fff; }
+        .why-us h2 { color: #fff !important; }
+        .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .check-list { list-style: none; margin-top: 20px; }
+        .check-list li { margin-bottom: 20px; display: flex; align-items: center; font-size: 1.1rem; }
+        .check-icon { background: var(--accent-orange); color: #fff; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; }
+        .why-img { border-radius: var(--radius); box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 5px solid rgba(255,255,255,0.1); }
+
+        /* --- REVIEWS --- */
+        .testimonials { background-color: var(--bg-light); }
+        .review-card { background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow); text-align: left; }
+        .stars { color: #FFD700; margin-bottom: 15px; display: block; }
+        .review-text { font-style: italic; color: #555; margin-bottom: 15px; display: block; }
+        .client-name { font-weight: 700; color: var(--primary-blue); }
+        .client-service { font-size: 0.8rem; color: #999; text-transform: uppercase; }
+
+        /* --- FAQ --- */
+        .faq-section { background-color: var(--bg-white); }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        details { background: var(--bg-light); margin-bottom: 15px; border-radius: var(--radius); overflow: hidden; }
+        summary { padding: 20px; cursor: pointer; font-weight: 700; display: flex; justify-content: space-between; align-items: center; list-style: none; color: var(--primary-blue); }
+        summary::after { content: '+'; color: var(--accent-orange); font-size: 1.5rem; }
+        details[open] summary::after { content: '-'; }
+        .faq-ans { padding: 0 20px 20px 20px; color: var(--text-gray); }
+
+        /* --- FOOTER --- */
+        footer { background: var(--primary-dark); color: #999; padding: 40px 0; text-align: center; font-size: 0.9rem; }
+        footer strong { color: #fff; font-size: 1.2rem; display: block; margin-bottom: 10px; }
+
+        /* --- ANIMACIONES --- */
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- RESPONSIVIDAD --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .why-grid { grid-template-columns: 1fr; }
+            .why-img { height: 300px; order: -1; margin-bottom: 20px; }
+            .btn-cta { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="hero-bg"></div>
+        <div class="hero-content reveal">
+            <span class="badge">Servicio en todo Madrid</span>
+            <h1>Tu Casa Como Nueva,<br>Sin Dolores de Cabeza.</h1>
+            <p>¿Necesitas una reparación urgente o esa instalación pendiente? Servicio rápido, limpio y con precio cerrado. Tu "manitas" de confianza.</p>
+            
+            <a href="https://wa.me/34600000000?text=Hola,%20necesito%20un%20presupuesto." class="btn-cta">
+                Pedir Presupuesto Gratis
+            </a>
+            
+            <p style="margin-top: 15px; font-size: 0.9rem; color: #fff !important; text-shadow: 0 1px 5px #000;">
+                ⚡ Respuesta media en 5 minutos
+            </p>
+        </div>
+    </header>
+
+    <section class="bg-white">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <h2>¿Qué solucionamos por ti?</h2>
+                <p>Desde pequeños arreglos hasta instalaciones complejas. Una solución integral para tu hogar u oficina.</p>
+            </div>
+
+            <div class="grid-cards">
+                <div class="service-card reveal">
+                    <div class="icon-box">⚡</div>
+                    <h3>Electricidad</h3>
+                    <p>Cambio de enchufes, lámparas, ventiladores de techo e instalación de iluminación LED.</p>
+                </div>
+                <div class="service-card reveal" style="transition-delay: 0.1s;">
+                    <div class="icon-box">💧</div>
+                    <h3>Fontanería</h3>
+                    <p>Reparación de fugas, cambio de grifos, sifones, cisternas y desatascos simples.</p>
+                </div>
+                <div class="service-card reveal" style="transition-delay: 0.2s;">
+                    <div class="icon-box">🔨</div>
+                    <h3>Montaje e Instalación</h3>
+                    <p>Montaje de muebles (IKEA, etc.), cortinas, estanterías, soportes de TV, cuadros y espejos.</p>
+                </div>
+                <div class="service-card reveal" style="transition-delay: 0.3s;">
+                    <div class="icon-box">🎨</div>
+                    <h3>Pequeñas Reformas</h3>
+                    <p>Pintura, retoques en pladur, cambio de cerraduras, bisagras y persianas.</p>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 40px;">
+                <a href="https://wa.me/34600000000?text=Hola,%20hacéis%20este%20tipo%20de%20trabajo?" style="color: var(--primary-blue); font-weight: 600; border-bottom: 2px solid var(--accent-orange);">Consultar otros servicios por WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us">
+        <div class="container">
+            <div class="why-grid">
+                <div class="reveal">
+                    <h2>¿Por qué elegirnos?</h2>
+                    <p style="color: #ccc; margin-bottom: 30px;">Sabemos que es difícil meter a extraños en casa. Por eso, nuestra prioridad es tu seguridad y satisfacción.</p>
+                    
+                    <ul class="check-list">
+                        <li><span class="check-icon">✓</span> Sin suciedad: Dejamos todo limpio.</li>
+                        <li><span class="check-icon">✓</span> Herramientas profesionales.</li>
+                        <li><span class="check-icon">✓</span> Presupuesto cerrado antes de empezar.</li>
+                        <li><span class="check-icon">✓</span> Garantía de 3 meses en reparaciones.</li>
+                        <li><span class="check-icon">✓</span> Puntualidad y formalidad.</li>
+                    </ul>
+                </div>
+                <div class="reveal">
+                    <img src="https://images.unsplash.com/photo-1581141849291-1125c7b692b5?q=80&w=1000&auto=format&fit=crop" alt="Profesional trabajando" class="why-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <h2>Lo que dicen nuestros clientes</h2>
+                <p>La tranquilidad de quien ya tiene la casa a punto.</p>
+            </div>
+
+            <div class="grid-cards">
+                <div class="review-card reveal">
+                    <span class="stars">★★★★★</span>
+                    <span class="review-text">"Llegó puntual, montó mi armario súper rápido y se llevó todos los cartones. ¡Muy recomendable!"</span>
+                    <div>
+                        <span class="client-name">Carla Méndez</span> <br>
+                        <span class="client-service">Montaje de Muebles</span>
+                    </div>
+                </div>
+                <div class="review-card reveal" style="transition-delay: 0.1s;">
+                    <span class="stars">★★★★★</span>
+                    <span class="review-text">"Tenía un grifo goteando hacía semanas. Lo arregló en 20 minutos y el precio fue muy justo. Muy educado."</span>
+                    <div>
+                        <span class="client-name">Roberto López</span> <br>
+                        <span class="client-service">Fontanería</span>
+                    </div>
+                </div>
+                <div class="review-card reveal" style="transition-delay: 0.2s;">
+                    <span class="stars">★★★★★</span>
+                    <span class="review-text">"Servicio eléctrico impecable. Cambió todos los enchufes antiguos. Me sentí muy segura."</span>
+                    <div>
+                        <span class="client-name">Ana Paula</span> <br>
+                        <span class="client-service">Electricidad</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container faq-container reveal">
+            <div class="section-header text-center">
+                <h2>Preguntas Frecuentes</h2>
+            </div>
+            
+            <details>
+                <summary>¿Cobráis desplazamiento?</summary>
+                <div class="faq-ans">Para presupuestos sencillos por WhatsApp (con fotos), es gratis. Para visitas de diagnóstico, cobramos una salida que se descuenta si aceptas el presupuesto.</div>
+            </details>
+            <details>
+                <summary>¿Aceptáis tarjeta o Bizum?</summary>
+                <div class="faq-ans">¡Sí! Aceptamos Efectivo, Tarjeta y Bizum al momento.</div>
+            </details>
+            <details>
+                <summary>¿Dais garantía?</summary>
+                <div class="faq-ans">Sí, ofrecemos 3 meses de garantía en la mano de obra de cualquier reparación realizada.</div>
+            </details>
+            <details>
+                <summary>¿Qué zonas atendéis?</summary>
+                <div class="faq-ans">Atendemos toda la Comunidad de Madrid. Consulta el suplemento por distancia para zonas alejadas.</div>
+            </details>
+        </div>
+    </section>
+
+    <section class="bg-white text-center reveal">
+        <div class="container">
+            <h2 style="margin-bottom: 20px;">¡No dejes para mañana lo que gotea hoy!</h2>
+            <p style="max-width: 600px; margin: 0 auto 30px auto; color: #666;">Los pequeños problemas pueden convertirse en grandes averías. Llama a un profesional ahora.</p>
+            <a href="https://wa.me/34600000000?text=Hola,%20necesito%20una%20visita." class="btn-cta">
+                Agendar Visita Técnica
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <strong>Repara Todo Servicios</strong>
+            <p>Atendiendo de Lunes a Sábado, de 09h a 20h.</p>
+            <p>Contacto: (+34) 600 000 000</p>
+            <br>
+            <p>&copy; 2024 Repara Todo. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/34600000000" class="float-wa" aria-label="WhatsApp">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382C17.112 14.382 16.752 14.248 16.479 13.973C15.933 13.427 15.933 12.539 16.479 11.993C17.025 11.447 17.913 11.447 18.459 11.993C19.005 12.539 19.005 13.427 18.459 13.973C18.186 14.248 17.826 14.382 17.472 14.382Z" fill="white"/><path d="M5.957 14.382C5.597 14.382 5.237 14.248 4.964 13.973C4.418 13.427 4.418 12.539 4.964 11.993C5.51 11.447 6.398 11.447 6.944 11.993C7.49 12.539 7.49 13.427 6.944 13.973C6.671 14.248 6.311 14.382 5.957 14.382Z" fill="white"/><path d="M12 2C6.486 2 2 6.486 2 12C2 17.514 6.486 22 12 22C17.514 22 22 17.514 22 12C22 6.486 17.514 2 12 2ZM12 20C7.589 20 4 16.411 4 12C4 7.589 7.589 4 12 4C16.411 4 20 7.589 20 12C20 16.411 16.411 20 12 20Z" fill="white"/><path d="M12 18C8.691 18 6 15.309 6 12H8C8 14.206 9.794 16 12 16C14.206 16 16 14.206 16 12H18C18 15.309 15.309 18 12 18Z" fill="white"/></svg>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            const elements = document.querySelectorAll('.reveal');
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
